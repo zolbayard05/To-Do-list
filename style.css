@@ -18,7 +18,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 400px;
-  height: 300px;
+  height: fit-content;
   margin-top: 150px;
 }
 .container {
@@ -64,6 +64,11 @@ button {
   display: flex;
   gap: 6px;
 }
+.active {
+  background-color: #3c82f6 !important;
+  color: white !important;
+}
+
 .filter-container button {
   width: fit-content;
   height: 32px;
@@ -123,4 +128,10 @@ li button {
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
+}
+
+.todo-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

@@ -15,17 +15,44 @@
           <button id="add-task-btn" onclick="addTask()">Add</button>
         </div>
         <div class="filter-container">
-          <button class="btn" id="All">All</button>
-          <button class="btn" id="Active">Active</button>
-          <button class="btn" id="Completed">Completed</button>
+          <button
+            class="btn active"
+            id="All"
+            onclick="
+              filterAll();
+              setActive(this);
+            "
+          >
+            All
+          </button>
+          <button
+            class="btn"
+            id="Active"
+            onclick="
+              filterActive();
+              setActive(this);
+            "
+          >
+            Active
+          </button>
+          <button
+            class="btn"
+            id="Completed"
+            onclick="(filterCompleted(), setActive(this))"
+          >
+            Completed
+          </button>
         </div>
         <ul id="task-list"></ul>
       </div>
-      <div class="task-list-container">No tasks yet. Add one above!</div>
+      <div class="task-list-container" id="message">
+        No tasks yet. Add one above!
+      </div>
       <div class="footer-container">
         <span>Powered by <a href="">Pinecone academy</a></span>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
