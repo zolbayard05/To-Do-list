@@ -1,6 +1,6 @@
 let tasks = [];
 
-// Function to Display tasks
+// ________Function to Display tasks
 function displayTasks() {
   let html = "";
   for (let i = 0; i < tasks.length; i++) {
@@ -8,7 +8,7 @@ function displayTasks() {
       "<li>" +
       '<input type="checkbox" ' +
       (tasks[i].isDone ? "checked" : "") +
-      ' onchange="toggleTask(' +
+      ' onchange="checkTask(' +
       i +
       ')" />' +
       tasks[i].text +
@@ -19,7 +19,7 @@ function displayTasks() {
   document.getElementById("task-list").innerHTML = html;
 }
 
-// Function to Add a task
+// _________Function to Add a task
 function addTask() {
   let taskInput = document.getElementById("task-input");
   let text = taskInput.value;
@@ -32,32 +32,38 @@ function addTask() {
   displayTasks();
 }
 
-// Function to delete task
+// __________Function to delete task
 function deleteTask(i) {
   tasks.splice(i, 1);
   saveTasks();
   displayTasks();
 }
 
-// Function to Save tasks
+// ___________Function to Save tasks
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Function to Load tasks
+// __________Function to Load tasks
 function loadTasks() {
   let saved = localStorage.getItem("tasks");
   if (saved !== null) {
     tasks = JSON.parse(saved);
   }
 }
-// Load and display tasks when page loads
+// __________Load and display tasks when page loads
 loadTasks();
 displayTasks();
 
 let activeTasks = [];
 let complated = [];
 
+//_________Function to show all tasks
+function filterAll() {
+  displayTasks();
+}
+
+//___________ Function to show active tasks
 function filterActive() {
   let html = "";
   for (let i = 0; i < tasks.length; i++) {
@@ -76,6 +82,7 @@ function filterActive() {
   document.getElementById("task-list").innerHTML = html;
 }
 
+//__________Function to show complete tasks
 function filterCompleted() {
   let html = "";
   for (let i = 0; i < tasks.length; i++) {
@@ -93,17 +100,13 @@ function filterCompleted() {
   }
   document.getElementById("task-list").innerHTML = html;
 }
-
+//_________Function to check checkbox
 function checkTask(i) {
   tasks[i].isDone = !tasks[i].isDone;
   saveTasks();
   displayTasks();
 }
-
-function filterAll() {
-  displayTasks();
-}
-
+//_________Function to keep buttons blue
 function setActive(btn) {
   document.getElementById("All").classList.remove("active");
   document.getElementById("Active").classList.remove("active");
